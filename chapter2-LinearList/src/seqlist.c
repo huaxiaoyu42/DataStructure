@@ -45,9 +45,25 @@ void IncreaseSize(SeqList *L, int len){
     free(p); // 释放原来的内存空间
 }
 
+void ListInsert(SeqList *L, int i, ElemType e){
+    for(int j = L->length; j >= i; j--){
+        L->data[j] = L->data[j-1];
+    }
+    L->data[i-1] = e;
+    L->length++;
+}
 
 int main(void){
 
+    SeqList l;
+    InitList(&l);
+    for(int i = 1; i<= 10;i++){
+        ListInsert(&l,i,i);
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        printf("%d ",l.data[i]);        
+    } 
 
     return 0;
 }

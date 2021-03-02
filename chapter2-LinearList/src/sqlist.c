@@ -27,9 +27,25 @@ void InitList(SqList *L){
 }
 
 
+void ListInsert(SqList *L, int i, ElemType e){
+    for(int j = L->length; j >= i; j--){
+        L->data[j] = L->data[j-1];
+    }
+    L->data[i-1] = e;
+    L->length++;
+}
+
 int main(void){
     SqList l;
     InitList(&l);
+    for(int i = 1; i<= 10;i++){
+        ListInsert(&l,i,i);
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        printf("%d ",l.data[i]);        
+    }
+    
 
     return 0;
 }
