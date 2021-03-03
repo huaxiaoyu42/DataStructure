@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+typedef enum { false, true} bool;
+
 #define ElemType int // 定义数据的类型
 #define InitSize 10  // 定义顺序表的初始长度
 
@@ -52,6 +54,20 @@ void ListInsert(SeqList *L, int i, ElemType e){
     L->data[i-1] = e;
     L->length++;
 }
+
+
+bool ListDelete(SeqList *L, int i, ElemType *e){
+    if(i < 1 || i > L->length){
+        return false;
+    }
+    *e = L->data[i - 1];
+    for(int j = i; j < L->length; j++){
+        L->data[j-1] = L->data[j];
+    }
+    L->length--;
+    return true;
+}
+
 
 int main(void){
 
