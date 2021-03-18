@@ -1,25 +1,13 @@
 #include <stdio.h>
 
-typedef enum
-{
+#include"../include/linearlist.h"
+
+typedef enum {
     false,
     true
 } bool;
 
-#define ElemType int // 定义数据的类型
-#define MaxSize 10   // 定义最大长度
-/**
- * 
- * 定义顺序表的结构体 -- 静态分配
- * data: 存储数据的数组
- * length: 顺序表当前的长度 
- * 
-*/
-typedef struct
-{
-    ElemType data[MaxSize];
-    int length;
-} SqList;
+
 
 /**
  * 
@@ -98,7 +86,7 @@ ElemType DelMin(SqList *L)
 
 bool ReverseList(SqList *L){
     int pre = 0;
-    int tail = L->data[L->length -1];
+    int tail = L->length -1;
     ElemType tmp;
 
     while(pre < tail){
@@ -112,25 +100,70 @@ bool ReverseList(SqList *L){
 
 }
 
-int main(void)
-{
-    SqList l;
-    InitList(&l);
-    for (int i = 1; i <= 10; i++)
-    {
-        ListInsert(&l, i, i);
-    }
-    for (int i = 0; i < 10; i++)
-    {
-        printf("%d ", l.data[i]);
-    }
- //   printf("min is %d\n", DelMin(&l));
-    ReverseList(&l);
+/**
+ * 对长度为n的顺序表L，编写一个时间复杂度为 O(n)、空间复杂度为 O(1)的算法,
+ * 该算法删除线性表中所有值为 x 的数据元素。
+*/
 
-    for (int i = 0; i < l.length; i++)
-    {
-        printf("%d ", l.data[i]);
+void Del_X(SqList *L, ElemType x){
+    int l = 0;
+    for(int i = 0; i < L->length; i++){
+        if(L->data[i] != x){
+            L->data[l] = L->data[i];
+            l++;
+        }
     }
-
-    return 0;
+    L->length = l;
 }
+
+void Del_bt_s_t(SqList *L,int s, int t ){
+    
+    if(s >= t || s < 0 || t > L->length-1){
+
+        printf("error!\n");
+        return;
+    }
+
+    int l = 0;
+
+    for(int i = 0; i< L->length; i++){
+        if(L->data[i] <= s || L->data[i] >= t){
+            L->data[l] = L->data[i];
+            l++;
+        }
+    }
+    L->length = l;
+}
+
+void Del_Dup(SqList *L){
+
+    int pre = 0;
+    int tail = 1;
+    int l = 0;
+
+    while(tail <= L->length-1){
+        if(L->data[pre] != L->data[tail]){
+            L->data[l] = L->data[pre];
+            l++;
+        }
+        pre++;
+        tail++;
+    }
+    L->data[l] = L->data[L->length-1];
+    l++;
+    L->length = l;
+}
+
+bool Merge(SqList a, SqList b,SqList *c){
+    if(a.length + b.length > c->length){
+        return false;
+    }
+    int i = 0, j = 0, k = 0;
+    while(i<a.length && j < b.length){
+       if(a.data[i] < b.data[j]){
+           
+       } 
+    }
+}
+
+
