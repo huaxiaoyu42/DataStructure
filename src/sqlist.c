@@ -1,13 +1,16 @@
 #include <stdio.h>
 
-#include"../include/linearlist.h"
+#include "../include/linearlist.h"
 
-typedef enum {
-    false,
-    true
-} bool;
-
-
+#define REVERSE           \
+    while (pre < tail)    \
+    {                     \
+        tmp = a[pre];     \
+        a[pre] = a[tail]; \
+        a[tail] = tmp;    \
+        pre++;            \
+        tail--;           \
+    };
 
 /**
  * 
@@ -84,20 +87,20 @@ ElemType DelMin(SqList *L)
     }
 }
 
-bool ReverseList(SqList *L){
+bool ReverseList(SqList *L)
+{
     int pre = 0;
-    int tail = L->length -1;
+    int tail = L->length - 1;
     ElemType tmp;
 
-    while(pre < tail){
-       tmp = L->data[pre]; 
-       L->data[pre] = L->data[tail];
-       L->data[tail] = tmp;
-       pre++;
-       tail--;
+    while (pre < tail)
+    {
+        tmp = L->data[pre];
+        L->data[pre] = L->data[tail];
+        L->data[tail] = tmp;
+        pre++;
+        tail--;
     }
-
-
 }
 
 /**
@@ -105,10 +108,13 @@ bool ReverseList(SqList *L){
  * 该算法删除线性表中所有值为 x 的数据元素。
 */
 
-void Del_X(SqList *L, ElemType x){
+void Del_X(SqList *L, ElemType x)
+{
     int l = 0;
-    for(int i = 0; i < L->length; i++){
-        if(L->data[i] != x){
+    for (int i = 0; i < L->length; i++)
+    {
+        if (L->data[i] != x)
+        {
             L->data[l] = L->data[i];
             l++;
         }
@@ -116,9 +122,11 @@ void Del_X(SqList *L, ElemType x){
     L->length = l;
 }
 
-void Del_bt_s_t(SqList *L,int s, int t ){
-    
-    if(s >= t || s < 0 || t > L->length-1){
+void Del_bt_s_t(SqList *L, int s, int t)
+{
+
+    if (s >= t || s < 0 || t > L->length - 1)
+    {
 
         printf("error!\n");
         return;
@@ -126,8 +134,10 @@ void Del_bt_s_t(SqList *L,int s, int t ){
 
     int l = 0;
 
-    for(int i = 0; i< L->length; i++){
-        if(L->data[i] <= s || L->data[i] >= t){
+    for (int i = 0; i < L->length; i++)
+    {
+        if (L->data[i] <= s || L->data[i] >= t)
+        {
             L->data[l] = L->data[i];
             l++;
         }
@@ -135,35 +145,112 @@ void Del_bt_s_t(SqList *L,int s, int t ){
     L->length = l;
 }
 
-void Del_Dup(SqList *L){
+void Del_Dup(SqList *L)
+{
 
     int pre = 0;
     int tail = 1;
     int l = 0;
 
-    while(tail <= L->length-1){
-        if(L->data[pre] != L->data[tail]){
+    while (tail <= L->length - 1)
+    {
+        if (L->data[pre] != L->data[tail])
+        {
             L->data[l] = L->data[pre];
             l++;
         }
         pre++;
         tail++;
     }
-    L->data[l] = L->data[L->length-1];
+    L->data[l] = L->data[L->length - 1];
     l++;
     L->length = l;
 }
 
-bool Merge(SqList a, SqList b,SqList *c){
-    if(a.length + b.length > c->length){
+bool Merge(SqList a, SqList b, SqList *c)
+{
+    if (a.length + b.length > c->length)
+    {
         return false;
     }
     int i = 0, j = 0, k = 0;
-    while(i<a.length && j < b.length){
-       if(a.data[i] < b.data[j]){
-           
-       } 
+    while (i < a.length && j < b.length)
+    {
+        if (a.data[i] < b.data[j])
+        {
+            c->data[k++] = a.data[i++];
+        }
+        else
+        {
+            c->data[k++] = b.data[j++];
+        }
     }
+    while (i < a.length)
+    {
+        c->data[k++] = a.data[i++];
+    }
+    while (j < b.length)
+    {
+        c->data[k++] = b.data[j++];
+    }
+    c->length = k;
+    return true;
 }
 
+void Reverse_two_list(ElemType a[], int left, int right, int arraySize)
+{
+    int pre = 0;
+    int tail = arraySize - 1;
+    ElemType tmp;
 
+    REVERSE;
+
+    pre = 0;
+    tail = left - 1;
+
+    REVERSE;
+
+    pre = left;
+    tail = right + left - 1;
+
+    REVERSE;
+}
+
+void SearchExchangeInsert(SqList *l, ElemType x)
+{
+    int low = 0, high = l->length - 1, mid;
+
+    while (low < high)
+    {
+        mid = (low + high) / 2;
+        if (l->data[mid] == x)
+        {
+            break;
+        }
+        else if (l->data[mid] < x)
+        {
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+
+    if (l->data[mid] && mid != l->length - 1)
+    {
+        ElemType tmp = l->data[mid];
+        l->data[mid] = l->data[mid + 1];
+        l->data[mid + 1] = tmp;
+    }
+
+    if (low > high)
+    {
+        int i;
+        for (i = l->length - 1; i > high; i--)
+        {
+            l->data[i + 1] = l->data[i];
+        }
+        l->data[i + 1] = x;
+    }
+}
