@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "../include/linearlist.h"
+#include "../include/sqlist.h"
 
 #define REVERSE           \
     while (pre < tail)    \

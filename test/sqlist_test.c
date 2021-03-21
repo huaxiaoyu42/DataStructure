@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "../include/linearlist.h"
+#include "../include/sqlist.h"
 
 int main(){
 

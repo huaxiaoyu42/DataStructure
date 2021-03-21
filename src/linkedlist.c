@@ -1,13 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-
-#define ElemType int
-typedef enum {false,true} bool;
-
-typedef struct LNode{
-    ElemType data;
-    struct LNode *next; 
-}LNode,*LinkedList;
+#include "../include/linkedlist.h"
 
 bool InitList(LNode **L){
     *L = (LNode *)malloc(sizeof(LNode));
@@ -16,6 +9,22 @@ bool InitList(LNode **L){
     } 
     (*L)->next = NULL;
     return true;
+}
+
+LNode* ListHeadInsert(LNode *l){
+    ElemType x;
+    LNode *s;
+    scanf("%d",&x);
+
+    while(x != 9999){
+        s = (LNode *)malloc(sizeof(LNode));
+        s->data = x;
+        s->next = l->next;
+        l->next = s;
+        scanf("%d",&x);
+    }
+
+    return l;
 }
 
 bool ListInsert(LNode *L,int i, ElemType e){
@@ -63,13 +72,4 @@ bool InsertPriorNode(LNode *L, ElemType e){
     s->data = L->data;
     L->data = e;
     return true;
-}
-
-int main(void){
-    LNode *L;
-    InitList(&L);
-    (*L).data = 10;
-    printf("%d\n",(*L).data);
-
-    return 0;
 }
