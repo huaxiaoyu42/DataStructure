@@ -27,6 +27,21 @@ LNode* ListHeadInsert(LNode *l){
     return l;
 }
 
+LNode* ListTailInsert(LNode *l){
+    ElemType x;
+    LNode *s,*r=l;
+    scanf("%d",&x);
+    while(x != 9999){
+        s = (LNode *)malloc(sizeof(LNode));
+        s->data = x;
+        r->next = s;
+        r = s;
+        scanf("%d",&x);
+    }
+    r->next = NULL;
+    return l;
+}
+
 bool ListInsert(LNode *L,int i, ElemType e){
     if(i<1){
         return false;
