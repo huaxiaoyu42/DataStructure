@@ -24,4 +24,29 @@ typedef struct DNode{
 bool InitDLinkedList(DNode **l);
 
 
+/**
+ * 在p结点之后插入s结点
+*/
+bool InsertNextDNode(DNode *p,DNode *s);
+
+
+/**
+ * 删除p结点之后的结点
+*/
+bool DeleteNextDNode(DNode *p);
+
+/**
+ * 销毁链表
+*/
+void DestoryList(DNode **l){
+
+   while((*l)->next != NULL){
+         DeleteNextDNode(*l);
+   }
+   free(*l);
+
+   (*l) = NULL;
+
+}
+
 #endif

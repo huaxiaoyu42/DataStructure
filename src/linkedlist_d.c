@@ -25,3 +25,21 @@ bool InsertNextDNode(DNode *p,DNode *s){
     p->next = s;
     return true;
 }
+
+bool DeleteNextDNode(DNode *p){
+    if(p == NULL){
+        return false;
+    }
+    DNode *q = p->next;
+    if(q == NULL){
+        return false;
+    }
+    p->next = q->next;
+    if(q->next != NULL){
+        q->next->prior = q;
+    }
+    free(q);
+    return true;
+}
+
+
