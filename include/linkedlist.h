@@ -26,22 +26,42 @@ LNode* ListHeadInsert(LNode *l);
 */
 LNode* ListTailInsert(LNode *l);
 
-LNode* GetElem(LNode *l,int i){
-    int j = 0;
-    LNode *p = l->next;
-    if(i == 0){
-        return l;
-    }
-    // if(i < xcm/)
-}
+/**
+ * 按序号查找结点
+*/
+LNode* GetElem(LNode *l, int i);
 
+/**
+ * 按值查找结点
+*/
+LNode* LocateElem(LNode *l,ElemType e);
 
+/**
+ * 在第i个位置插入元素e
+*/
 bool ListInsert(LNode *L,int i, ElemType e);
 
+/**
+ * 在L结点之后插入结点
+*/
 bool InsertNextNode(LNode *L, ElemType e);
 
+/**
+ * 在L结点之前插入结点
+*/
 bool InsertPriorNode(LNode *L, ElemType e);
 
+
+/**
+ * 按位序删除结点
+*/
+bool ListDelete(LNode *l,int i,ElemType *e);
+
+/**
+ * 删除指定结点p
+*/
+
+bool DeleteNode(LNode *p);
 
 
 #endif
