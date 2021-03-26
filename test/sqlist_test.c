@@ -3,32 +3,33 @@
 
 int main(){
 
-    // int a[10]={1,2,3,4,5,6,7,8,9};
+
+printf("hello\n");
+
+    SqList l;
+    InitList(&l);
+
+    ListInsert(&l,1,1);
+    ListInsert(&l,2,2);
+    ListInsert(&l,3,3);
+    ListInsert(&l,4,4);
+    ListInsert(&l,5,5);
+    ListInsert(&l,6,6);
+    ListInsert(&l,7,7);
+    ListInsert(&l,8,8);
+    ListInsert(&l,9,9);
+    
 
 
-    SqList *l;
-    InitList(l);
-
-    l->data[0] = 0;
-    l->data[1] = 1;
-    l->data[2] = 2;
-    l->data[3] = 3;
-    l->data[4] = 4;
-    l->data[5] = 5;
-    l->data[6] = 6;
-    l->data[7] = 7;
-    l->data[8] = 8;
-    l->data[9] = 9;
-
-    l->length = 10;
+    for(int i = 0;i<9;i++){
+        printf("%d ",l.data[i]);
+    }
+printf("\n");
+    MoveList(&l,3);
 
 
-    // Reverse_two_list(a,5,5,10);
-    MoveList(l,2);
-
-
-    for(int i = 0;i<10;i++){
-        printf("%d ",l->data[i]);
+    for(int i = 0;i<9;i++){
+        printf("%d ",l.data[i]);
     }
 
     return 0;
