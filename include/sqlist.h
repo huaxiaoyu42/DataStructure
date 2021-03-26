@@ -65,4 +65,6 @@ void Reverse_two_list(ElemType a[],int left,int right,int arraySize);
 */
 void SearchExchangeInsert(SqList *l,ElemType x);
 
+void MoveList(SqList *l, int p);
+
 #endif

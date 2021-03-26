@@ -38,15 +38,8 @@ bool DeleteNextDNode(DNode *p);
 /**
  * 销毁链表
 */
-void DestoryList(DNode **l){
+void DestoryList(DNode **l);
 
-   while((*l)->next != NULL){
-         DeleteNextDNode(*l);
-   }
-   free(*l);
 
-   (*l) = NULL;
-
-}
 
 #endif

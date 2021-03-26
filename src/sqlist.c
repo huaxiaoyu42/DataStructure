@@ -254,3 +254,25 @@ void SearchExchangeInsert(SqList *l, ElemType x)
         l->data[i + 1] = x;
     }
 }
+
+
+void MoveList(SqList *l, int p){
+
+    int *a = l->data;
+
+    int pre,tail;
+    ElemType tmp;
+
+    pre = 0;
+    tail = l->length - 1;
+    REVERSE
+
+    pre = 0;
+    tail = l->length - 1 -p;
+    REVERSE
+
+    pre = l->length - p;
+    tail = l->length - 1;
+    REVERSE
+
+}

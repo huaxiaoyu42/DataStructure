@@ -42,4 +42,15 @@ bool DeleteNextDNode(DNode *p){
     return true;
 }
 
+void DestoryList(DNode **l){
+
+   while((*l)->next != NULL){
+         DeleteNextDNode(*l);
+   }
+   free(*l);
+
+   (*l) = NULL;
+
+}
+
 
