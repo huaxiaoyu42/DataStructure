@@ -276,3 +276,36 @@ void MoveList(SqList *l, int p){
     REVERSE
 
 }
+
+ElemType MidMumber(int a[],int b[],int n){
+    int h1,t1,m1;
+    int h2,t2,m2;
+    h1 = h2 = 0;
+    t1 = t2 = n - 1;
+    
+    while(h1 != t1 || h2 != t2){
+        m1 = (h1 + t1 )/2;
+        m2 = (h2 + t2 )/2;
+        if(a[m1] == b[m2]){
+            return a[m1];
+        }
+        if(a[m1] < b[m2]){
+            if((h1 + t1)%2 == 0){
+                h1 = m1;
+                t2 = m2;
+            }else{
+                h1 = m1 +1;
+            }
+        }else{
+            if((h2 + t2)%2 == 0){
+                t1 = m1;
+                t2 = m2;
+            }else{
+                t1 = m1;
+                t2 = m2 + 1;
+            }
+        }
+    }
+
+    return a[h1] < b[h2] ? a[h1] : b[h2];
+}
