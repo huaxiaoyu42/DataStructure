@@ -1,3 +1,7 @@
+/**
+ * 顺序栈
+*/
+
 #ifndef SQSTACK_H
 #define SQSTACK_H
 
