@@ -22,14 +22,18 @@ bool enqueue(LinkQueue *q,ElemType e){
     if (q->rear != NULL){
         q->rear->next = s;
     }
+    else {
+        q->front = s;
+    }
 
     q->rear = s;
+    
     return true;
 
 }
 
 bool dequeue(LinkQueue *q,ElemType *e){
-    if(q->front == q->rear){
+    if(q->front == NULL && q->rear == NULL){
         return false;
     }
 
