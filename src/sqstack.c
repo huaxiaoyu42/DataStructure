@@ -1,7 +1,10 @@
+#define ElemType char 
+#include"../include/sqstack.h"
+
 #include "../include/sqstack.h"
 
 
-void InitStack(SqStack *s){
+void InitStack(SqStack* s){
     s->top = -1;
 }
 
@@ -31,3 +34,13 @@ bool GetTop(SqStack *s,ElemType *x){
     
     return true;
 }
+
+bool stack_is_empty(SqStack *s){
+    if(s->top == -1){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+

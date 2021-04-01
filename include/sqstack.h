@@ -8,8 +8,9 @@
 #include<stdbool.h>
 #define MaxSize 10
 
-
+#ifndef ElemType
 #define ElemType int
+#endif
 
 typedef struct {
     ElemType data[MaxSize];
@@ -23,5 +24,7 @@ bool Push(SqStack *s,ElemType x);
 bool Pop(SqStack *s,ElemType *x);
 
 bool GetTop(SqStack *s,ElemType *x);
+
+bool stack_is_empty(SqStack *s);
 
 #endif
