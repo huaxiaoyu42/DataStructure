@@ -6,7 +6,7 @@
 #define SQSTACK_H
 
 #include<stdbool.h>
-#define MaxSize 10
+#define MaxSize 20
 
 #ifndef ElemType
 #define ElemType int
