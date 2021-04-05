@@ -66,7 +66,7 @@ void Reverse_two_list(ElemType a[],int left,int right,int arraySize);
 void SearchExchangeInsert(SqList *l,ElemType x);
 
 /**
- * 
+ * 2.2.10 
 */
 void MoveList(SqList *l, int p);
 
@@ -74,5 +74,7 @@ void MoveList(SqList *l, int p);
  * 查找两个有序数组的中位数
 */
 ElemType MidMumber(int a[],int b[],int n);
+
+
 
 #endif

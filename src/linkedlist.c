@@ -152,3 +152,73 @@ bool DeleteNode(LNode *p){
     free(q);
     return true;
 }
+
+
+void Delete_x(LNode *l,ElemType x){
+    if(l->next == NULL){
+        return;
+    }
+    LNode *p = l->next;
+    if(p->data == x){
+        l->next  = p->next;
+        free(p);
+        Delete_x(l,x);
+    }else{
+        Delete_x(l->next,x);
+    }
+}
+
+void R_print_body(LNode *l){
+    if(l->next != NULL){
+        R_print_body(l->next);
+    }
+    if(l != NULL){
+        printf("%d ",l->data);
+    }
+}
+
+void Reverse_print(LNode *l){
+    if(l != NULL){
+        R_print_body(l->next);
+    }
+}
+
+void Delete_min(LNode *l){
+    LNode *p;
+    if(l != NULL){
+        p = l->next;
+    }
+    ElemType min = p->data;
+    LNode *k = p;
+    while(p != NULL){
+        if(p->data < min){
+            min = p->data;
+            k = p;
+        }
+        p = p->next;
+    }
+    DeleteNode(k);
+
+}
+
+void Reverse_linkedlist(LNode *l){
+    if(l == NULL){
+        return;
+    }
+
+    LNode *cur = l->next; // 指向当前结点
+    LNode *pre = NULL;   // 指向当前结点的前一个结点，当cur为第一个非头结点时，它为NULL
+    LNode *tmp = NULL;  // 记住当前结点的下一个位置
+    
+    while(cur != NULL){
+        tmp = cur->next;
+
+        cur->next = pre; // 将当前结点的next指针指向前一个结点
+
+        //向后移动
+        pre = cur;
+        cur = tmp;
+    }
+    //当cur为NULL时，pre指向新头的下一个
+    l->next = pre;
+}

@@ -64,4 +64,27 @@ bool ListDelete(LNode *l,int i,ElemType *e);
 bool DeleteNode(LNode *p);
 
 
+/**
+ * 删除所有值为x的结点，并释放其空间
+*/
+
+void Delete_x(LNode *l,ElemType x);
+
+
+/**
+ * 从尾到头反向输出每个结点的值
+*/
+void Reverse_print(LNode *l);
+
+/**
+ * 删除一个最小值结点，假设最小值结点是唯一的
+*/
+void Delete_min(LNode *l);
+
+/**
+ * 反转链表
+*/
+void Reverse_linkedlist(LNode *l);
+
+
 #endif
