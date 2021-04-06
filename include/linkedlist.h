@@ -86,5 +86,21 @@ void Delete_min(LNode *l);
 */
 void Reverse_linkedlist(LNode *l);
 
+/**
+ * 带头节点的单链表，使其元素递增有序
+*/
+
+void Sort_linkedlist(LNode *l);
+
+/**
+ * 单链表中元素无序，删除介于给定的两个值之间的元素
+*/
+
+void Range_delete(LNode *l,int min,int max);
+
+/**
+ * 按照递增次序输出单链表中的各个结点的数据元素，并释放结点所占的存储空间
+*/
+void Print_and_delete_min(LNode *l);
 
 #endif

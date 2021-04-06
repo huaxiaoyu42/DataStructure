@@ -222,3 +222,62 @@ void Reverse_linkedlist(LNode *l){
     //当cur为NULL时，pre指向新头的下一个
     l->next = pre;
 }
+
+void Sort_linkedlist(LNode *l){
+    LNode *p = l->next;
+    LNode *r = p->next;
+    LNode *pre;
+    p->next = NULL;
+    p = r;
+    while(p != NULL){
+        r = r->next;
+        pre = l;
+        while(pre->next != NULL && pre->next->data < p->data){
+            pre = pre->next;
+        }
+        p->next = pre->next;
+        pre->next = p;
+        p = r;
+    }
+
+}
+
+
+void Range_delete(LNode *l,int min,int max){
+    if(l == NULL){
+        return;
+    }
+    LNode *p = l;
+    LNode *k;
+    while(p->next != NULL){
+        if(p->next->data > min && p->next->data < max){
+            k = p->next;
+            p->next = k->next;
+            free(k);
+        }else{
+            p = p->next;
+        }
+
+    }
+}
+
+
+void Print_and_delete_min(LNode *l){
+    if(l == NULL){
+        return;
+    }
+    LNode *min;
+    LNode *p;
+    while(l->next != NULL){
+        min = l->next;
+        p = l->next;
+        while(p != NULL){
+            if(p->data < min->data){
+                min = p;
+            }
+            p = p->next;
+        }
+        printf("%d ",min->data);
+        DeleteNode(min);
+    }
+}
