@@ -144,9 +144,42 @@ void Print_and_delete_min_test(){
     Print_and_delete_min(l);
 }
 
+void Split_linkedlist_test(){
+    LNode *l;
+
+    InitList(&l);
+
+    for(int i = 1;i<10;i++){
+        ListInsert(l,i,rand()%10);
+    }
+    LNode *p;
+    PRINT
+
+    LNode *a;
+    LNode *b;
+    InitList(&a);
+    InitList(&b);
+
+    Split_linkedlist(l,a,b);
+
+    p = a->next;
+    while(p != NULL){
+        printf("%d ",p->data);
+        p = p->next;
+    }
+    printf("\n");
+
+    p = b->next;
+    while(p != NULL){
+        printf("%d ",p->data);
+    p = p->next;
+    }
+    printf("\n");
+}
+
 int main(){
     srand((unsigned)time(NULL));
-    Print_and_delete_min_test();
+    Split_linkedlist_test();
 
     return 0;
 }

@@ -103,4 +103,9 @@ void Range_delete(LNode *l,int min,int max);
 */
 void Print_and_delete_min(LNode *l);
 
+/**
+    按照奇偶拆分链表
+*/
+void Split_linkedlist(LNode *l,LNode *a,LNode *b);
+
 #endif

@@ -281,3 +281,37 @@ void Print_and_delete_min(LNode *l){
         DeleteNode(min);
     }
 }
+
+void append_list(LNode *l,LNode *x){
+    if(l == NULL){
+        return;
+    }
+    LNode *p = l;
+    while(p->next != NULL){
+        p = p->next;
+    }
+    p->next = x;
+}
+
+void Split_linkedlist(LNode *l,LNode *a,LNode *b){
+    if(l == NULL){
+        return;
+    }
+    LNode *p = l->next;
+    LNode *next = l->next;
+    // 结点是否为奇数的标志，是为true
+    bool flag = true;
+
+    while(p != NULL){
+        if(false){
+            p->next = NULL;
+            append_list(a,p);
+        }else{
+            p->next = NULL;
+            append_list(b,p);
+        }
+        p = next;
+        next = p->next;
+    }
+
+}
