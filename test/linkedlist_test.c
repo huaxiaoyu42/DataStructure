@@ -150,7 +150,7 @@ void Split_linkedlist_test(){
     InitList(&l);
 
     for(int i = 1;i<10;i++){
-        ListInsert(l,i,rand()%10);
+        ListInsert(l,i,i);
     }
     LNode *p;
     PRINT
@@ -177,9 +177,43 @@ void Split_linkedlist_test(){
     printf("\n");
 }
 
+void Split_linkedlist_2_test(){
+    LNode *l;
+
+    InitList(&l);
+
+    for(int i = 1;i<10;i++){
+        ListInsert(l,i,i);
+    }
+    LNode *p;
+    PRINT
+
+    LNode *a;
+    LNode *b;
+    InitList(&a);
+    InitList(&b);
+
+    Split_linkedlist_2(l,a,b);
+
+    p = a->next;
+    while(p != NULL){
+        printf("%d ",p->data);
+        p = p->next;
+    }
+    printf("\n");
+
+    p = b->next;
+    while(p != NULL){
+        printf("%d ",p->data);
+    p = p->next;
+    }
+    printf("\n");
+}
+
 int main(){
-    srand((unsigned)time(NULL));
-    Split_linkedlist_test();
+    //srand((unsigned)time(NULL));
+    Split_linkedlist_2_test();
+    printf("\n");
 
     return 0;
 }

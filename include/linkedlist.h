@@ -108,4 +108,10 @@ void Print_and_delete_min(LNode *l);
 */
 void Split_linkedlist(LNode *l,LNode *a,LNode *b);
 
+/**
+ * 按照奇偶顺序拆分链表，偶链表逆序
+*/
+void Split_linkedlist_2(LNode *l,LNode *a,LNode *b);
+
+
 #endif

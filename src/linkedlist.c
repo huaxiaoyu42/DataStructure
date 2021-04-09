@@ -266,52 +266,78 @@ void Print_and_delete_min(LNode *l){
     if(l == NULL){
         return;
     }
-    LNode *min;
+    LNode *pre;
     LNode *p;
     while(l->next != NULL){
-        min = l->next;
+        pre = l;
         p = l->next;
-        while(p != NULL){
-            if(p->data < min->data){
-                min = p;
+        while(p->next != NULL){
+            if(p->next->data < pre->next->data){
+                pre = p;
             }
             p = p->next;
         }
-        printf("%d ",min->data);
-        DeleteNode(min);
+        printf("%d ",pre->next->data);
+        LNode *tmp = pre->next;
+        pre->next = tmp->next;
+        free(tmp);
     }
 }
 
-void append_list(LNode *l,LNode *x){
-    if(l == NULL){
-        return;
-    }
-    LNode *p = l;
-    while(p->next != NULL){
-        p = p->next;
-    }
-    p->next = x;
-}
+
 
 void Split_linkedlist(LNode *l,LNode *a,LNode *b){
     if(l == NULL){
         return;
     }
     LNode *p = l->next;
-    LNode *next = l->next;
+
+    LNode *ra = a;
+    LNode *rb = b;
+
     // 结点是否为奇数的标志，是为true
     bool flag = true;
 
     while(p != NULL){
-        if(false){
-            p->next = NULL;
-            append_list(a,p);
+        if(flag){
+            ra->next = p;
+            ra = p;
         }else{
-            p->next = NULL;
-            append_list(b,p);
+            rb->next = p;
+            rb = p;
         }
-        p = next;
-        next = p->next;
+        p = p->next;
+        flag = !flag;
+
     }
+    ra->next = NULL;
+    rb->next = NULL;
+
+}
+
+void Split_linkedlist_2(LNode *l,LNode *a,LNode *b){
+    LNode *p = l->next;
+    LNode *ra = a;
+    LNode *rb = b;
+    LNode *n = NULL;
+
+    rb->next = NULL;
+
+    bool flag = true;
+
+    while(p != NULL){
+        if(flag){
+            ra->next = p;
+            ra = p;
+            p = p->next;
+        }else{
+            n = p->next;
+            p->next = rb->next;
+            rb->next = p;
+            p = n;
+        }
+    }
+
+    ra->next = NULL;
 
 }
