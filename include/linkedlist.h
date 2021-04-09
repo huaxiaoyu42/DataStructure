@@ -113,5 +113,16 @@ void Split_linkedlist(LNode *l,LNode *a,LNode *b);
 */
 void Split_linkedlist_2(LNode *l,LNode *a,LNode *b);
 
+/**
+ * 删除链表中重复的元素
+*/
+
+void Delete_same(LNode *l);
+
+/**
+ * 合并两个有序递增的链表，结果链表递减
+*/
+
+void Merge_linkedlist(LNode *a,LNode *b);
 
 #endif

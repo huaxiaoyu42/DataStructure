@@ -336,8 +336,65 @@ void Split_linkedlist_2(LNode *l,LNode *a,LNode *b){
             rb->next = p;
             p = n;
         }
+
+        flag = !flag;
     }
 
     ra->next = NULL;
+
+}
+
+void Delete_same(LNode *l){
+    if(l == NULL){
+        return;
+    }
+    LNode *a = l->next;
+    LNode *b = a->next;
+
+    while(b !=NULL){
+        if(a->data == b->data){
+            a->next = b->next;
+            free(b);
+            b = a->next;
+        }else{
+            a = a->next;
+            b = a->next;
+        }
+    }
+}
+
+void Merge_linkedlist(LNode *a,LNode *b){
+    if(a == NULL || b == NULL){
+        return;
+    }
+    LNode *ra = a->next;
+    LNode *rb = b->next;
+    a->next = NULL;
+    LNode *next;
+
+    while(ra != NULL && rb != NULL){
+        if(ra->data <= rb->data){
+            next = ra->next;
+            ra->next = a->next;
+            a->next = ra;
+            ra = next;
+        }else{
+            next = rb->next;
+            rb->next = a->next;
+            a->next = rb;
+            rb = next;
+        }
+    }
+
+    if(ra != NULL){
+        rb = ra;
+    }
+
+    while(rb != NULL){
+            next = rb->next;
+            rb->next = a->next;
+            a->next = rb;
+            rb = next;
+    }
 
 }

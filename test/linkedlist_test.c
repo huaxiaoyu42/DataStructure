@@ -144,6 +144,8 @@ void Print_and_delete_min_test(){
     Print_and_delete_min(l);
 }
 
+
+
 void Split_linkedlist_test(){
     LNode *l;
 
@@ -210,10 +212,52 @@ void Split_linkedlist_2_test(){
     printf("\n");
 }
 
+
+void Delete_same_test(){
+    LNode *l;
+
+    InitList(&l);
+
+    for(int i = 1;i<10;i++){
+        ListInsert(l,i,rand()%10);
+    }
+    LNode *p;
+    PRINT
+
+    Delete_same(l);
+
+    PRINT
+}
+
+void Merge_linkedlist_test(){
+    LNode *a;
+    LNode *b;
+    InitList(&a);
+    InitList(&b);
+
+    for(int i = 1;i<7;i++){
+        ListInsert(a,i,i);
+    }
+    int k = 1;
+    for(int i = 5;i<8;i++){
+        ListInsert(b,k,i); 
+        k++;
+    }
+
+    Merge_linkedlist(a,b);
+    LNode *p = a->next;
+
+    while( p != NULL){
+        printf("%d ",p->data);
+        p = p->next;
+    }
+    printf("\n");
+}
+
 int main(){
     //srand((unsigned)time(NULL));
-    Split_linkedlist_2_test();
-    printf("\n");
+    
+    Merge_linkedlist_test();
 
     return 0;
 }
