@@ -398,3 +398,64 @@ void Merge_linkedlist(LNode *a,LNode *b){
     }
 
 }
+
+void Union(LNode *a,LNode *b){
+    LNode *pa = a->next;
+    LNode *pb = b->next;
+    LNode *pc = a;
+    LNode *tmp;
+
+    while(pa != NULL && pb != NULL){
+        if(pa->data = pb->data){
+            pc->next = pa;
+            pc = pa;
+            pa = pa->next;
+        }else if(pa->data < pb->data){
+            tmp = pa;
+            pa = pa->next;
+            free(tmp);
+        }else{
+            tmp = pb;
+            pb = pb->next;
+            free(tmp);
+        }
+    }
+
+    while(pa != NULL){
+        tmp = pa;
+        pa = pa->next;
+        free(tmp);
+    }
+    while(pb != NULL){
+        tmp = pb;
+        pb = pb->next;
+        free(tmp);
+    }
+    pb->next = NULL;
+    free(b);
+}
+
+bool Pattern(LNode *a,LNode *b){
+    LNode *pa = a->next;
+    LNode *pb = b->next;
+
+    LNode *pre = pa;
+
+
+    while(pa != NULL && pb != NULL){
+        if(pa->data == pb->data){
+            pa = pa->next;
+            pb = pb->next;
+        }else{
+            pre = pre->next;
+            pa = pre;
+            pb = b;
+        }
+    }
+
+    if(pb == NULL){
+        return true;
+    }else{
+        return false;
+    }
+}

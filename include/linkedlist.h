@@ -125,4 +125,18 @@ void Delete_same(LNode *l);
 
 void Merge_linkedlist(LNode *a,LNode *b);
 
+/**
+ * 有a，b两个链表，其元素递增排列，求a，b的交集，放在a中
+*/
+
+void Union(LNode *a,LNode *b);
+
+
+/**
+ * 判断b是否为a的子链表
+*/
+bool Pattern(LNode *a,LNode *b);
+
+
+
 #endif
