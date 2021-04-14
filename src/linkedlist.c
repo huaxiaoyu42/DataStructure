@@ -12,22 +12,8 @@ bool InitList(LNode **L){
     return true;
 }
 
-LNode* ListHeadInsert(LNode *l){
-    ElemType x;
-    LNode *s;
-    scanf("%d",&x);
 
-    while(x != 9999){
-        s = (LNode *)malloc(sizeof(LNode));
-        s->data = x;
-        s->next = l->next;
-        l->next = s;
-        scanf("%d",&x);
-    }
-
-    return l;
-}
-
+/*
 LNode* ListTailInsert(LNode *l){
     ElemType x;
     LNode *s,*r=l;
@@ -41,7 +27,7 @@ LNode* ListTailInsert(LNode *l){
     }
     r->next = NULL;
     return l;
-}
+}*/
 
 LNode* GetElem(LNode *l, int i){
     int j = 1;
@@ -186,9 +172,9 @@ void Reverse_print(LNode *l){
 
 void Delete_min(LNode *l){
     LNode *p;
-    if(l != NULL){
+   
         p = l->next;
-    }
+    
     ElemType min = p->data;
     LNode *k = p;
     while(p != NULL){

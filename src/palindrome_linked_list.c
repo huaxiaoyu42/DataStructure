@@ -5,16 +5,18 @@
 
 
 bool is_palindrome(LNode *p){
-    LNode *p1 = p->next;
-    LNode *p2 = p1->next;
+    LNode *p1 = p;
+    LNode *p2 = p;
     SqStack s;
+    InitStack(&s);
 
     
 
     while(p2 != NULL){
-        Push(&s,p1->data);
+
         p1 = p1->next;
-        p2 = p1->next->next;
+        p2 = p2->next->next;
+        Push(&s, p1->data);
     }
 
     int top;
@@ -36,9 +38,11 @@ int main(){
 
     ListInsert(p,1,1);
     ListInsert(p,2,2);
-    ListInsert(p,3,3);
-    ListInsert(p,4,2);
-    ListInsert(p,5,1);
+    ListInsert(p, 3, 2);
+    ListInsert(p,4,3);
+    ListInsert(p, 5, 2);
+    ListInsert(p,6,2);
+    ListInsert(p,7,1);
 
     bool res = is_palindrome(p);
 
