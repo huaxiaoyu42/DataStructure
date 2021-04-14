@@ -3,7 +3,9 @@
 
 #include<stdbool.h>
 
+#ifndef ElemType
 #define ElemType int
+#endif
 
 typedef struct LNode{
     ElemType data;

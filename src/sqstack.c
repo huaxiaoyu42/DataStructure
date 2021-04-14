@@ -1,8 +1,4 @@
-#define ElemType char 
 #include"../include/sqstack.h"
-
-#include "../include/sqstack.h"
-
 
 void InitStack(SqStack* s){
     s->top = -1;
